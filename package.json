@@ -1,0 +1,23 @@
+{
+  "name": "drawgame-server",
+  "version": "0.1.0",
+  "description": "A server for the draw game.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangchf/DrawGame-Server.git"
+  },
+  "author": "zhang.chf@qq.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangchf/DrawGame-Server/issues"
+  },
+  "homepage": "https://github.com/zhangchf/DrawGame-Server#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}
