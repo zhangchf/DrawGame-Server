@@ -4,6 +4,9 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const PORT = process.env.PORT || 3000;
 
+const questions = require('./questions');
+console.log('questions: ' + JSON.stringify(questions));
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
@@ -14,32 +17,6 @@ var names = {};
 
 var drawerIndex = 0;
 
-var questions = [
-    {
-        "question": "chair",
-        "options": ["chain", "chair", "desk", "dusk"]
-    },
-    {
-        "question": "car",
-        "options": ["bar", "care", "car", "can"]
-    },
-    {
-        "question": "lamp",
-        "options": ["long", "camp", "lamp", "limp"]
-    },
-    {
-        "question": "dog",
-        "options": ["dog", "dub", "cat", "cot"]
-    },
-    {
-        "question": "ball",
-        "options": ["bull", "ball", "balloon", "bass"]
-    },
-    {
-        "question": "cola",
-        "options": ["cola", "cold", "gold", "koala"]
-    }
-];
 
 var leaderboard = {
     "Tom and Jerry": 83,
@@ -98,16 +75,6 @@ io.on('connection', function (socket) {
             leaderboard[groupName] = 99;
             console.log('leaderboard:' + leaderboard);
             io.emit('leaderboard', leaderboard);
-        //     var highestScore = scores[socket.id];
-        //     var highestId = socket.id;
-        //     for (var j = 0; j < sockets.length; j++) {
-        //         if (highestScore < scores[sockets[j].id]) {
-        //             highestScore = scores[sockets[j].id];
-        //             highestId = sockets[j].id;
-        //         }
-        //     }
-            // socket.to(highestId).emit('result', 'you win!');
-            // console.log('send to ' + highestId);
         }
         
     });
